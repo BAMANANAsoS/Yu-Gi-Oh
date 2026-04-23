@@ -1,0 +1,132 @@
+/* 서브페이지 전용 설정 */
+:root {
+    --bg-color: #0f0f0f;      /* 깊은 검은색 */
+    --card-bg: #1a1a1a;       /* 약간 밝은 검은색 */
+    --accent-red: #8b0000;    /* 눈이 편안한 딥 레드 */
+    --glow-red: #ff3333;      /* 강조용 밝은 레드 */
+    --text-main: #e0e0e0;     /* 밝은 회색 (완전 흰색보다 눈이 편함) */
+    --line-color: #331111;    /* 어두운 붉은색 구분선 */
+}
+
+body {
+    margin: 0;
+    padding: 0;
+    background-color: var(--bg-color);
+    color: var(--text-main);
+    font-family: 'Noto Sans KR', serif;
+}
+
+/* 상단 네비게이션 */
+header {
+    background: #000;
+    border-bottom: 3px solid var(--accent-red);
+    padding: 15px 0;
+    position: sticky;
+    top: 0;
+    z-index: 1000;
+    text-align: center;
+}
+
+.nav-button {
+    background: none;
+    border: 1px solid var(--accent-red);
+    color: var(--accent-red);
+    padding: 8px 20px;
+    margin: 0 5px;
+    cursor: pointer;
+    font-weight: 600;
+    transition: all 0.3s ease;
+}
+
+.nav-button:hover, .nav-button.active {
+    background: var(--accent-red);
+    color: #fff;
+    box-shadow: 0 0 10px var(--accent-red);
+}
+
+/* 갤러리 레이아웃 */
+.gallery-container {
+    max-width: 900px;
+    margin: 0 auto;
+    padding: 50px 20px;
+}
+
+/* 개별 전시물 */
+.exhibit-item {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    margin-bottom: 100px;
+    padding-bottom: 50px;
+    border-bottom: 2px solid var(--line-color);
+}
+
+/* 어두운 전시회 액자 느낌 */
+.image-frame {
+    padding: 10px;
+    background: #111;
+    border: 1px solid #331111;
+    outline: 10px solid #111;
+    box-shadow: 0 0 0 12px var(--accent-red), 0 20px 40px rgba(0,0,0,0.7);
+    margin-bottom: 30px;
+}
+
+.monster-img {
+    width: 624px;
+    height: 624px;
+    object-fit: cover;
+    display: block;
+}
+
+/* 이름 스타일 */
+.monster-name {
+    font-size: 1.5rem;
+    margin: 20px 0;
+    letter-spacing: 1px;
+}
+
+/* 붉게 빛나는 이름 효과 (타오르는 느낌) */
+.glow-red-name {
+    color: #fe9f9f; /* 그라데이션 대신 선명한 빨간색으로 고정 */
+    font-weight: 900;
+    /* 텍스트 주변에 붉은 기운이 도는 빛 효과 */
+    text-shadow: 0 0 10px rgba(255, 0, 0, 0.9), 0 0 20px rgba(139, 0, 0, 0.6);
+}
+
+/* 상세 이미지 펼치기 버튼 */
+.expand-btn {
+    background: var(--accent-red);
+    color: #fff;
+    border: none;
+    padding: 10px 25px;
+    cursor: pointer;
+    border-radius: 5px;
+    font-size: 0.9rem;
+    transition: 0.3s;
+}
+
+.expand-btn:hover {
+    background: #ff0000;
+}
+
+/* 펼쳐지는 영역 */
+.expand-content {
+    max-height: 0;
+    overflow: hidden;
+    transition: max-height 0.6s cubic-bezier(0.4, 0, 0.2, 1);
+    width: 100%;
+    display: flex;
+    justify-content: center;
+}
+
+.expand-content.active {
+    max-height: 2000px;
+    margin-top: 30px;
+}
+
+.large-img {
+    max-width: 100%;
+    height: auto;
+    border: 1px solid var(--accent-red);
+    box-shadow: 0 0 20px rgba(139, 0, 0, 0.5);
+}

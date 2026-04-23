@@ -1,0 +1,133 @@
+/* 기본 설정 */
+:root {
+    --bg-color: #f8f9fa;
+    --card-bg: #ffffff;
+    --accent-gold: #c5a059;
+    --text-main: #222222;
+    --line-color: #e0e0e0;
+}
+
+body {
+    margin: 0;
+    padding: 0;
+    background-color: var(--bg-color);
+    color: var(--text-main);
+    font-family: 'Noto Sans KR', serif;
+}
+
+/* 상단 네비게이션 */
+header {
+    background: #fff;
+    border-bottom: 3px solid var(--accent-gold);
+    padding: 15px 0;
+    position: sticky;
+    top: 0;
+    z-index: 1000;
+    text-align: center;
+}
+
+.nav-button {
+    background: none;
+    border: 1px solid var(--accent-gold);
+    color: var(--accent-gold);
+    padding: 8px 20px;
+    margin: 0 5px;
+    cursor: pointer;
+    font-weight: 600;
+    transition: all 0.3s ease;
+}
+
+.nav-button:hover, .nav-button.active {
+    background: var(--accent-gold);
+    color: #fff;
+}
+
+/* 갤러리 레이아웃 */
+.gallery-container {
+    max-width: 900px;
+    margin: 0 auto;
+    padding: 50px 20px;
+}
+
+/* 개별 전시물 (하나씩 세로로 배치) */
+.exhibit-item {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    margin-bottom: 100px;
+    padding-bottom: 50px;
+    border-bottom: 2px solid var(--line-color); /* 이미지 사이의 구분선 */
+}
+
+/* 전시회 액자 느낌의 테두리 */
+.image-frame {
+    padding: 10px;
+    background: #fff;
+    border: 1px solid #ddd;
+    outline: 10px solid #fff;
+    box-shadow: 0 0 0 12px var(--accent-gold), 0 20px 40px rgba(0,0,0,0.1);
+    margin-bottom: 30px;
+}
+
+.monster-img {
+    width: 624px;
+    height: 624px;
+    object-fit: cover;
+    display: block;
+}
+
+/* 이름 스타일 */
+.monster-name {
+    font-size: 1.5rem;
+    margin: 20px 0;
+    letter-spacing: 1px;
+}
+
+/* 빛나는 이름 효과 */
+.glow-name {
+    color: #d4af37; /* 그라데이션 대신 진한 금색으로 고정 */
+    font-weight: 900;
+    /* 텍스트 주변에 은은하게 퍼지는 빛 효과 */
+    text-shadow: 0 0 10px rgba(212, 175, 55, 0.8), 0 0 20px rgba(212, 175, 55, 0.4);
+}
+
+/* 상세 이미지 펼치기 버튼 */
+.expand-btn {
+    background: #333;
+    color: #fff;
+    border: none;
+    padding: 10px 25px;
+    cursor: pointer;
+    border-radius: 5px;
+    font-size: 0.9rem;
+}
+
+/* 펼쳐지는 영역 애니메이션 */
+.expand-content {
+    max-height: 0;
+    overflow: hidden; /* 높이가 줄어들 때 넘치는 부분은 그냥 가림 */
+    transition: max-height 0.6s cubic-bezier(0.4, 0, 0.2, 1);
+    width: 100%;
+    
+    /* [수정] 내부 정렬 방식 변경 */
+    display: block; 
+    position: relative;
+}
+
+/* 내부 이미지 설정 */
+.large-img {
+    width: 100%;
+    height: auto; /* 높이를 자동(auto)으로 두어 찌부 방지 */
+    display: block;
+    border: 1px solid var(--accent-gold);
+    
+    /* [추가] 닫힐 때 이미지가 위로 딸려 올라가지 않도록 고정 느낌을 줌 */
+    position: relative;
+    transform-origin: top;
+}
+
+.expand-content.active {
+    max-height: 2000px; /* 충분한 높이 확보 */
+    margin-top: 20px; /* 펼쳐졌을 때만 상단 여백 추가 */
+    margin-bottom: 20px;
+}
